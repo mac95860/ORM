@@ -1,0 +1,36 @@
+<h1>Eat-The-Burger</h1>
+
+<div class = "row">
+
+    <div class = "col-md-6">
+        {{!-- new burgers here --}}
+        <ul>
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <li>{{this.burger_name}}</li>
+                     <button class="btn btn-primary addToNotDevoured" type="submit" id="devour">Devour</button>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class = "col-md=6">
+        {{!-- devoured burgers here --}}
+        <ul>
+            {{#each burgers}}
+                {{#if devoured}}
+                    <li>{{this.burger_name}}</li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+</div>
+
+<form action ="/api/burgers" method="POST">
+ <div class="form-group">
+    <label for="textarea">Enter a burger</label>
+    <textarea class="form-control" id="burgerText" rows="3" type = "text" name = "burger"></textarea>
+     <button class="btn btn-primary addToNotDevoured" type="submit">Submit</button>
+  </div>
+</form>
