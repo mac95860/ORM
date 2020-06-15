@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
     burger.selectAll(function(data) {
         var obj = {
             burgers: data
-        }
+        };
         res.render("index", obj);
     });
 });
@@ -34,12 +34,8 @@ router.put("/api/burgers/:id", function (req, res) {7
         devoured: req.body.devoured
     }, condition, function(result) {
         result.status(200).end();
-    })
+    });
 });
-
-
-
-
 
 //export routes
 module.exports = router;
