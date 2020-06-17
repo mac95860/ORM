@@ -1,10 +1,13 @@
-//devour burger click function
-$("#devour").on("click", (event) => {
-    event.preventDefault();
+$(document).ready(() => {  
 
-  const id = $(this).data("id");
+//devour burger click function
+$(".devour").on("click", function(event) {
+    event.preventDefault();
+    console.log("clicked");
+    console.log($(this));
+  const id = $(this).attr("data-id");
   const burgerDevoured = {
-      devoured: true
+      devoured: 1
   };
     
   $.ajax(`api/burgers/${id}`, {
@@ -18,18 +21,20 @@ $("#devour").on("click", (event) => {
 });
 
 //create burger click function
-$("#addBurger").on("click", (event) => {
+$("#addBurger").on("click", function(event) {
     event.preventDefault();
-
+    console.log('clicked');
     const addBurger = {
         burger_name: $("#newBurger").val().trim(),
-        devoured: false
+        devoured: 0
     }
     $.ajax("/api/burgers", {
         type: "POST",
         data: addBurger
     }).then(() => {
         console.log("created new burger");
-        location.reload;
+        location.reload();
     })
+});
+
 });

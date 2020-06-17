@@ -27,13 +27,14 @@ router.post("/api/burgers", function (req, res) {
 
 //update burger to devoured
 router.put("/api/burgers/:id", function (req, res) {7
-    var condition = `id = ${req.params.id}`;
+    var condition = {id: parseInt(req.params.id)};
     console.log("condition" , condition);
+    console.log(req.body)
 
     burger.updateOne({
         devoured: req.body.devoured
     }, condition, function(result) {
-        result.status(200).end();
+        res.status(200).end();
     });
 });
 

@@ -11,16 +11,17 @@ const orm = {
     },
 
     insertOne: function (table, col, values, cb) {
-        var queryString = `INSERT INTO ${table} (${col.toString()}) VALUES (?)`;
-        connection.query(queryString, values, function(err, res) {
+        var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES (" + `"${values[0]}"` + "," + values[1] + ");";
+        console.log(queryString);
+        connection.query(queryString,  function(err, res) {
             if (err) throw err;
             cb(res);
         });
     },
 
     updateOne: function (table, devouredCol, condition, cb) {
-        var queryString = `UPDATE ${table} SET ${devouredCol.toString()} WHERE ${condition}`;
-        connection.query(queryString, function(err, res) {
+        var queryString = `UPDATE ${table} SET ? WHERE ?`;
+        connection.query(queryString, [devouredCol, condition], function(err, res) {
             if (err) throw err;
             cb(res);
         });
