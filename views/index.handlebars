@@ -1,38 +1,88 @@
+<style>
+    body {
+
+        background: rgb(134, 202, 241);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #notDevoured {
+        display: inline-block;
+    }
+
+    li {
+        width: 15vw;
+    }
+
+    .listItem {
+        margin-top: 15px;
+    }
+
+    .fa-hamburger {
+        color: rgb(134, 234, 241);
+    }
+
+    #burgerEntry {
+        margin-top: 15px;
+    }
+
+    #addBurger{
+        margin-top: 15px;
+    }
+</style>
+
 <h1>Eat-The-Burger</h1>
 
-<div class = "row">
-
-    <div class = "col-md-6">
-        {{!-- new burgers here --}}
-        <ul class = "list-group">
-            {{#each burgers}}
-                {{#unless devoured}}
-                    <li class="list-group-item">
-                        {{this.burger_name}}
-                        </li>
-                     <button class="btn btn-primary addToNotDevoured devour" type="submit"  data-id="{{this.id}}" data-burgerDevoured="{{this.devoured}}">Devour</button>
-                {{/unless}}
-            {{/each}}
-        </ul>
-    </div>
-
-    <div class = "col-md=6">
-        {{!-- devoured burgers here --}}
-        <ul class = "list-group">
-            {{#each burgers}}
-                {{#if devoured}}
-                    <li class="list-group-item">{{this.burger_name}}</li>
-                {{/if}}
-            {{/each}}
-        </ul>
-    </div>
-
+<div class="container d-flex justify-content-center">
+    <i class="fas fa-hamburger fa-10x"></i>
 </div>
-{{!-- describe burger and submit --}}
-<form>
- <div class="form-group">
-    <label for="textarea">Enter a burger</label>
-    <textarea class="form-control" id="newBurger" rows="3" type = "text"></textarea>
-     <button class="btn btn-primary addToNotDevoured" type="submit" id="addBurger" >Submit</button>
-  </div>
-</form>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6 d-flex justify-content-center">
+            {{!-- new burgers here --}}
+            <ul class="list-group" id="notDevoured">
+                {{#each burgers}}
+                {{#unless devoured}}
+                <div class="container">
+                    <div class="input-group-append listItem">
+                        <li class="list-group-item">{{this.burger_name}}</li>
+                        <button class="btn btn-danger addToNotDevoured devour" type="button" id="button-addon2"
+                            data-id="{{this.id}}" data-burgerDevoured="{{this.devoured}}">Devour</button>
+                    </div>
+                </div>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-md-6 d-flex justify-content-center">
+            {{!-- devoured burgers here --}}
+            <ul class="list-group">
+                {{#each burgers}}
+                {{#if devoured}}
+                <div class="container listItem">
+                    <li class="list-group-item">{{this.burger_name}}</li>
+                </div>
+
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+
+    </div>
+    {{!-- describe burger and submit --}}
+    <div class="container" id="burgerEntry">
+        <form >
+            <div class="form-group d-flex justify-content-center flex-column">
+                <label for="textarea  w-50 p-3" class="lead text-center">Enter a burger</label>
+                <textarea class="form-control w-50 p-3 mx-auto" id="newBurger" rows="3" type="text"
+                    placeholder="Enter a tasty burger"></textarea>
+                <button class="btn btn-success addToNotDevoured mx-auto" type="submit" id="addBurger">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
