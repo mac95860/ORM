@@ -12,7 +12,7 @@ if (process.env.JAWSDB_URL) {
       user: "z4ud5d7mkfh1buyj",
       password: "evhkvmp0j4kq7azl",
       database: "dqoma5tz6o5b14i8"
-    })
+    });
 };
 
 // const connection = mysql.createConnection({
